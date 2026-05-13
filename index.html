@@ -1,1 +1,1028 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love My Puppy — Puppy Boutique · Boca Raton</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root {
+  --fg: #111;
+  --fg-2: #444;
+  --fg-3: #777;
+  --fg-4: #aaa;
+  --bg: #f6f4f0;
+  --bg-2: #edeae4;
+  --bg-3: #e4e0d8;
+  --surface: #fff;
+  --surface-2: #faf9f7;
+  --dark: #111;
+  --dark-2: #1a1a1a;
+  --dark-3: #222;
+  --accent: #8b7355;
+  --accent-2: #a6926e;
+  --border: rgba(0,0,0,.07);
+  --border-dark: rgba(255,255,255,.08);
+  --serif: 'EB Garamond', 'Georgia', serif;
+  --sans: 'Outfit', -apple-system, sans-serif;
+  --max: 1080px;
+  --nav-h: 58px;
+  --ease: cubic-bezier(.4, 0, .2, 1);
+}
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 36px + 16px); }
+body { font-family: var(--sans); color: var(--fg); background: var(--bg); -webkit-font-smoothing: antialiased; font-weight: 300; font-size: 15px; line-height: 1.6; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+
+/* ─── ANNOUNCE ─── */
+.announce {
+  background: var(--dark);
+  color: var(--fg-4);
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.announce span { color: var(--accent-2); }
+
+/* ─── NAV ─── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  height: var(--nav-h);
+  background: rgba(246,244,240,.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow .4s var(--ease);
+}
+.nav.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,.05); }
+.nav-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: .01em;
+  color: var(--fg);
+}
+.nav-links { display: flex; gap: 24px; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  transition: color .3s;
+}
+.nav-links a:hover { color: var(--fg); }
+.nav-pill {
+  background: var(--dark) !important;
+  color: var(--bg) !important;
+  padding: 8px 18px;
+  border-radius: 2px;
+  font-weight: 400 !important;
+  transition: opacity .3s !important;
+}
+.nav-pill:hover { opacity: .8; }
+.mob-btn { display: none; background: none; border: none; cursor: pointer; }
+.mob-btn span { display: block; width: 18px; height: 1px; background: var(--fg); margin: 4px 0; }
+
+/* ─── HERO ─── */
+.hero {
+  padding: 100px 24px 80px;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.hero-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+  opacity: 0; animation: fadeUp .8s .15s forwards;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5.5vw, 52px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--fg);
+  letter-spacing: -.01em;
+  margin-bottom: 24px;
+  opacity: 0; animation: fadeUp .8s .3s forwards;
+}
+.hero h1 em { font-style: italic; }
+.hero-sub {
+  font-size: 15px;
+  color: var(--fg-3);
+  line-height: 1.75;
+  max-width: 480px;
+  margin: 0 auto 40px;
+  font-weight: 300;
+  opacity: 0; animation: fadeUp .8s .45s forwards;
+}
+.hero-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  opacity: 0; animation: fadeUp .8s .6s forwards;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 24px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: all .3s var(--ease);
+}
+.btn-dark { background: var(--dark); color: var(--bg); }
+.btn-dark:hover { background: var(--accent); }
+.btn-ghost { background: none; color: var(--fg); border: 1px solid var(--border); }
+.btn-ghost:hover { border-color: var(--fg); }
+
+/* ─── MARQUEE STATS ─── */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  padding: 48px 24px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  max-width: var(--max);
+  margin: 0 auto;
+  opacity: 0; animation: fadeUp .8s .75s forwards;
+}
+.stat { text-align: center; }
+.stat-val {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--fg);
+  line-height: 1.2;
+}
+.stat-label {
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--fg-4);
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+/* ─── SECTION SYSTEM ─── */
+.s { padding: 96px 24px; }
+.s-inner { max-width: var(--max); margin: 0 auto; }
+.s-header { margin-bottom: 48px; }
+.s-eyebrow {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.s-title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--fg);
+  letter-spacing: -.005em;
+  margin-bottom: 12px;
+}
+.s-title em { font-style: italic; }
+.s-desc {
+  font-size: 14px;
+  color: var(--fg-3);
+  max-width: 440px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+.s-dark { background: var(--dark); color: var(--bg); }
+.s-dark .s-eyebrow { color: var(--accent-2); }
+.s-dark .s-title { color: #fff; }
+.s-dark .s-desc { color: rgba(255,255,255,.45); }
+.s-alt { background: var(--bg-2); }
+
+/* ─── FINDER ─── */
+.finder-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.finder-tab {
+  padding: 10px 20px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all .3s;
+  color: var(--fg-3);
+}
+.finder-tab:hover { border-color: var(--fg-3); color: var(--fg); }
+.finder-tab.active {
+  background: var(--dark);
+  color: var(--bg);
+  border-color: var(--dark);
+}
+.finder-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.finder-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 36px 28px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .35s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.finder-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform .35s var(--ease);
+}
+.finder-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,.06);
+}
+.finder-card:hover::after { transform: scaleX(1); }
+.finder-card-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  display: block;
+}
+.finder-card-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--fg);
+  margin-bottom: 6px;
+}
+.finder-card-sub {
+  font-size: 12px;
+  color: var(--fg-3);
+  font-weight: 300;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.finder-card-breeds {
+  font-size: 11px;
+  color: var(--fg-4);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.6;
+}
+.finder-also {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.finder-chip {
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  background: var(--bg-2);
+  border-radius: 2px;
+  color: var(--fg-3);
+  font-weight: 400;
+  cursor: pointer;
+  transition: all .3s;
+}
+.finder-chip:hover { background: var(--dark); color: var(--bg); }
+
+/* ─── GROOMING ─── */
+.groom-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.groom-card {
+  background: var(--surface);
+  padding: 36px 28px;
+  transition: background .3s;
+}
+.groom-card:hover { background: var(--surface-2); }
+.groom-tag {
+  display: inline-block;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(139,115,85,.08);
+  padding: 3px 8px;
+  border-radius: 1px;
+  margin-bottom: 14px;
+}
+.groom-name {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--fg);
+  margin-bottom: 8px;
+}
+.groom-desc {
+  font-size: 13px;
+  color: var(--fg-3);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+.groom-price {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* ─── SPLIT ─── */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.split-placeholder {
+  aspect-ratio: 4/5;
+  background: var(--bg-3);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--fg-4);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 300;
+  border: 1px dashed var(--fg-4);
+}
+.split-body p {
+  font-size: 14px;
+  color: var(--fg-3);
+  line-height: 1.8;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+.split-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 28px;
+}
+.split-fact {
+  padding: 18px;
+  background: var(--bg);
+  border-radius: 3px;
+}
+.split-fact-val {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--fg);
+}
+.split-fact-label {
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fg-4);
+  margin-top: 2px;
+}
+
+/* ─── REVIEWS ─── */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border-dark);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.review-card {
+  background: var(--dark-2);
+  padding: 36px 28px;
+}
+.review-stars {
+  font-size: 10px;
+  color: var(--accent-2);
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+.review-text {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(255,255,255,.7);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.review-author {
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  font-weight: 400;
+}
+
+/* ─── FAQ ─── */
+.faq-list { max-width: 680px; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--fg);
+}
+.faq-icon {
+  font-size: 14px;
+  color: var(--fg-4);
+  transition: transform .3s var(--ease);
+  flex-shrink: 0;
+  margin-left: 16px;
+  font-family: var(--sans);
+  font-weight: 200;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s var(--ease);
+}
+.faq-item.open .faq-a { max-height: 300px; }
+.faq-a-inner {
+  padding: 0 0 22px;
+  font-size: 14px;
+  color: var(--fg-3);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* ─── VISIT ─── */
+.visit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.visit-card {
+  padding: 32px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.visit-card h3 {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+.visit-card p {
+  font-size: 13px;
+  color: var(--fg-3);
+  line-height: 1.7;
+  font-weight: 300;
+}
+.visit-card a { color: var(--accent); font-weight: 400; }
+
+/* ─── FINAL CTA ─── */
+.final-cta {
+  text-align: center;
+  padding: 96px 24px;
+  background: var(--dark);
+}
+.final-cta .s-eyebrow { color: var(--accent-2); }
+.final-cta h2 {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.5vw, 38px);
+  font-weight: 400;
+  color: #fff;
+  margin: 12px auto 14px;
+  max-width: 500px;
+}
+.final-cta h2 em { font-style: italic; color: var(--accent-2); }
+.final-cta p {
+  font-size: 13px;
+  color: rgba(255,255,255,.4);
+  margin-bottom: 36px;
+  font-weight: 300;
+}
+.btn-accent { background: var(--accent); color: #fff; }
+.btn-accent:hover { background: var(--accent-2); }
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--dark);
+  border-top: 1px solid var(--border-dark);
+  padding: 48px 24px 28px;
+  color: rgba(255,255,255,.3);
+}
+.footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 32px;
+}
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.footer-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+.footer h4 {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.2);
+  margin-bottom: 14px;
+}
+.footer ul { list-style: none; }
+.footer ul a {
+  display: block;
+  font-size: 13px;
+  color: rgba(255,255,255,.35);
+  margin-bottom: 8px;
+  font-weight: 300;
+  transition: color .3s;
+}
+.footer ul a:hover { color: var(--accent-2); }
+.footer-bottom {
+  max-width: var(--max);
+  margin: 32px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-dark);
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  letter-spacing: .06em;
+}
+.footer-credit {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--accent);
+  font-size: 12px;
+}
+
+/* ─── STICKY MOBILE ─── */
+.sticky-mobile {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+  background: var(--dark);
+  padding: 10px 16px;
+}
+.sticky-mobile a {
+  display: block;
+  text-align: center;
+  background: var(--accent);
+  color: #fff;
+  padding: 13px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.fade { opacity: 0; transform: translateY(16px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+.fade.v { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: .08s; }
+.d2 { transition-delay: .16s; }
+.d3 { transition-delay: .24s; }
+.d4 { transition-delay: .32s; }
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .mob-btn { display: block; }
+  .hero { padding: 64px 20px 48px; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .stats { flex-wrap: wrap; gap: 24px; padding: 32px 20px; }
+  .s { padding: 64px 20px; }
+  .finder-grid { grid-template-columns: 1fr; }
+  .groom-grid { grid-template-columns: 1fr; }
+  .split { grid-template-columns: 1fr; gap: 32px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .visit-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .sticky-mobile { display: block; }
+  body { padding-bottom: 58px; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: 28px; }
+  .stats { gap: 16px; }
+  .stat-val { font-size: 22px; }
+  .footer-inner { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE -->
+<div class="announce">Now Grooming Tuesday–Saturday · Extended Hours · <span>Walk-Ins Welcome</span></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Love My Puppy</a>
+    <ul class="nav-links">
+      <li><a href="#find">Find a Puppy</a></li>
+      <li><a href="#grooming">Grooming</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#visit" class="nav-pill">Visit</a></li>
+    </ul>
+    <button class="mob-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-label">Puppy Boutique · Boca Raton</p>
+  <h1>From our home<br>to <em>yours.</em></h1>
+  <p class="hero-sub">We're not your average pet store. We're a puppy boutique — matching extraordinary puppies with loving families since 2010.</p>
+  <div class="hero-actions">
+    <a href="#find" class="btn btn-dark">Find Your Puppy</a>
+    <a href="#grooming" class="btn btn-ghost">Grooming Services</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-val">Since 2010</div>
+    <div class="stat-label">Established</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">1,400+</div>
+    <div class="stat-label">Puppies Placed</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">4.9</div>
+    <div class="stat-label">Google Rating</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">97 Reviews</div>
+    <div class="stat-label">On Yelp</div>
+  </div>
+</div>
+
+<!-- FIND A PUPPY -->
+<section class="s s-alt" id="find">
+  <div class="s-inner">
+    <div class="s-header fade">
+      <p class="s-eyebrow">Find Your Match</p>
+      <h2 class="s-title">Browse by <em>size.</em></h2>
+      <p class="s-desc">Every puppy is vet-checked, vaccinated, and health certified. Special requests and breed orders always welcome.</p>
+    </div>
+
+    <div class="finder-tabs fade d1">
+      <button class="finder-tab active">All Sizes</button>
+      <button class="finder-tab">Small</button>
+      <button class="finder-tab">Medium</button>
+      <button class="finder-tab">Large</button>
+    </div>
+
+    <div class="finder-grid">
+      <div class="finder-card fade d1">
+        <span class="finder-card-icon"></span>
+        <div class="finder-card-title">Small Breeds</div>
+        <div class="finder-card-sub">Under 20 lbs · Perfect for apartments</div>
+        <div class="finder-card-breeds">Maltese · Chihuahua · Pomeranian · Toy Poodle · Yorkshire Terrier · Havanese · Shih Tzu · Lhasa Apso</div>
+      </div>
+      <div class="finder-card fade d2">
+        <span class="finder-card-icon"></span>
+        <div class="finder-card-title">Medium Breeds</div>
+        <div class="finder-card-sub">20–50 lbs · Family favorites</div>
+        <div class="finder-card-breeds">French Bulldog · English Bulldog · Cavalier King Charles · Cavapoo · Mini Goldendoodle · Shih Poo · Mini Whoodle</div>
+      </div>
+      <div class="finder-card fade d3">
+        <span class="finder-card-icon"></span>
+        <div class="finder-card-title">Large Breeds</div>
+        <div class="finder-card-sub">50+ lbs · For bigger families</div>
+        <div class="finder-card-breeds">Golden Retriever · Goldendoodle · Labrador · Standard Poodle · Available by request</div>
+      </div>
+    </div>
+
+    <div class="finder-also fade d4">
+      <span class="finder-chip">Hypoallergenic</span>
+      <span class="finder-chip">Apartment Friendly</span>
+      <span class="finder-chip">Smart Breeds</span>
+      <span class="finder-chip">New Arrivals</span>
+    </div>
+
+    <div style="text-align:center;margin-top:40px" class="fade">
+      <a href="tel:5613686767" class="btn btn-dark">Call to Check Availability</a>
+    </div>
+  </div>
+</section>
+
+<!-- GROOMING -->
+<section class="s" id="grooming">
+  <div class="s-inner">
+    <div class="s-header fade">
+      <p class="s-eyebrow">Grooming</p>
+      <h2 class="s-title">Full-service grooming by <em>professionals who care.</em></h2>
+      <p class="s-desc">Clean, modern salon. Experienced groomers. Every breed, every size. Now open Tuesday through Saturday.</p>
+    </div>
+
+    <div class="groom-grid fade">
+      <div class="groom-card">
+        <span class="groom-tag">Essential</span>
+        <div class="groom-name">Bath &amp; Blow-Dry</div>
+        <p class="groom-desc">Premium shampoo, blow-dry, ear cleaning, nail trim, sanitary trim. Maintenance between full grooms.</p>
+        <div class="groom-price">From $45</div>
+      </div>
+      <div class="groom-card">
+        <span class="groom-tag">Most Popular</span>
+        <div class="groom-name">Full Grooming</div>
+        <p class="groom-desc">Breed-specific cut, bath, blow-dry, nails, ears, teeth brushing, cologne, bandana. The complete experience.</p>
+        <div class="groom-price">From $65</div>
+      </div>
+      <div class="groom-card">
+        <span class="groom-tag">Lite</span>
+        <div class="groom-name">Lite Service</div>
+        <p class="groom-desc">Quick clean-up for pups who just need a tidy. Nail trim, ear clean, face trim, paw pad trim.</p>
+        <div class="groom-price">From $30</div>
+      </div>
+      <div class="groom-card">
+        <span class="groom-tag">Specialized</span>
+        <div class="groom-name">Dematting</div>
+        <p class="groom-desc">Gentle, professional dematting using specialized tools and conditioners. No pulling, no stress.</p>
+        <div class="groom-price">Consultation</div>
+      </div>
+      <div class="groom-card">
+        <span class="groom-tag">Add-On</span>
+        <div class="groom-name">De-Shedding</div>
+        <p class="groom-desc">Deep undercoat removal for heavy shedders. Keeps your home cleaner and your pup cooler in the Florida heat.</p>
+        <div class="groom-price">From $20</div>
+      </div>
+      <div class="groom-card">
+        <span class="groom-tag">First Timer</span>
+        <div class="groom-name">Puppy's First Groom</div>
+        <p class="groom-desc">Introductory session for puppies 12+ weeks. Gentle approach to get them comfortable with the grooming process.</p>
+        <div class="groom-price">From $35</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:40px" class="fade">
+      <a href="tel:5613686767" class="btn btn-dark">Book Grooming · (561) 368-6767</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="s s-alt" id="about">
+  <div class="s-inner">
+    <div class="split">
+      <div class="split-placeholder fade">Client Photo Here</div>
+      <div>
+        <div class="s-header fade" style="margin-bottom:20px">
+          <p class="s-eyebrow">Our Story</p>
+          <h2 class="s-title">A family business with one <em>objective.</em></h2>
+        </div>
+        <div class="split-body">
+          <p class="fade d1">Love My Puppy was founded to fill a need in the Boca Raton community — a place where finding your next family member feels personal, not transactional.</p>
+          <p class="fade d2">We take pride in keeping impeccably clean facilities that reflect our upscale standards, as well as our personal affection for every pup. We sell puppies, groom, sell accessories, and offer boarding — everything under one roof.</p>
+          <p class="fade d3">A wide selection of toys, grooming accessories, bedding, and apparel are regularly stocked. Special requests and orders are always welcome.</p>
+        </div>
+        <div class="split-facts fade d4">
+          <div class="split-fact"><div class="split-fact-val">2010</div><div class="split-fact-label">Established</div></div>
+          <div class="split-fact"><div class="split-fact-val">Family Owned</div><div class="split-fact-label">Since Day One</div></div>
+          <div class="split-fact"><div class="split-fact-val">4.9 Stars</div><div class="split-fact-label">Google Reviews</div></div>
+          <div class="split-fact"><div class="split-fact-val">All Breeds</div><div class="split-fact-label">Available</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="s s-dark" id="reviews">
+  <div class="s-inner">
+    <div class="s-header fade">
+      <p class="s-eyebrow">What Families Say</p>
+      <h2 class="s-title">Real families. Real <em>relationships.</em></h2>
+    </div>
+
+    <div class="reviews-grid fade">
+      <div class="review-card">
+        <div class="review-stars">★ ★ ★ ★ ★</div>
+        <p class="review-text">We got our French Bulldog here and the experience was incredible. They genuinely care about matching the right puppy with the right family.</p>
+        <div class="review-author">Sarah &amp; Mike T.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★ ★ ★ ★ ★</div>
+        <p class="review-text">The grooming is top-notch. My golden always comes out looking amazing. They treat every dog like family — you can tell they love what they do.</p>
+        <div class="review-author">Jessica L.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★ ★ ★ ★ ★</div>
+        <p class="review-text">Best puppy experience in South Florida. Transparent about health records, provided all documentation, and followed up weeks later to check on our Cavalier.</p>
+        <div class="review-author">David &amp; Ana R.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="s" id="faq">
+  <div class="s-inner">
+    <div class="s-header fade">
+      <p class="s-eyebrow">Questions</p>
+      <h2 class="s-title">Good to <em>know.</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade">
+        <button class="faq-q">Are your puppies vet-checked and vaccinated?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Every puppy is examined by a licensed veterinarian, vaccinated, and comes with complete health documentation before going to their new home.</div></div>
+      </div>
+      <div class="faq-item fade d1">
+        <button class="faq-q">Can I request a specific breed you don't currently have?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Absolutely. Special requests and breed orders are always welcome. Let us know what you're looking for and we'll work to find your perfect match.</div></div>
+      </div>
+      <div class="faq-item fade d1">
+        <button class="faq-q">How often should my dog be groomed?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Most dogs should be groomed every 4–6 weeks depending on breed and coat type. Your groomer will recommend the right schedule during your first visit. We recommend starting puppies at 12 weeks old.</div></div>
+      </div>
+      <div class="faq-item fade d2">
+        <button class="faq-q">Do you offer boarding?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes, we offer boarding services in addition to puppy sales and grooming. Call us for availability and rates.</div></div>
+      </div>
+
+      <div class="faq-item fade d3">
+        <button class="faq-q">What are your hours?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Monday 12–5pm, Tuesday–Friday 10am–6pm, Saturday 10am–6pm, Sunday 11am–4pm. Grooming available Tuesday through Saturday with extended hours.</div></div>
+      </div>
+      <div class="faq-item fade d3">
+        <button class="faq-q">Do I need an appointment to see puppies?<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">No appointment needed — walk-ins are welcome during business hours. For grooming, we recommend calling ahead to schedule.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="s s-alt" id="visit">
+  <div class="s-inner">
+    <div class="s-header fade">
+      <p class="s-eyebrow">Visit</p>
+      <h2 class="s-title">Come meet your <em>match.</em></h2>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-card fade">
+        <h3>Location</h3>
+        <p>1395 West Palmetto Park Road<br>Boca Raton, FL 33486<br><br><a href="https://maps.google.com/?q=1395+West+Palmetto+Park+Road+Boca+Raton+FL" target="_blank">Get Directions →</a></p>
+      </div>
+      <div class="visit-card fade d1">
+        <h3>Hours</h3>
+        <p>Mon 12–5pm<br>Tue–Fri 10am–6pm<br>Sat 10am–6pm<br>Sun 11am–4pm</p>
+      </div>
+      <div class="visit-card fade d2">
+        <h3>Contact</h3>
+        <p><a href="tel:5613686767">(561) 368-6767</a><br><a href="mailto:joann@lovemypuppy.com">joann@lovemypuppy.com</a><br><br>Walk-ins welcome.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <p class="s-eyebrow fade">From Our Home to Yours</p>
+  <h2 class="fade">Your next family member is <em>waiting.</em></h2>
+  <p class="fade">Visit us in Boca Raton or call today.</p>
+  <div class="fade">
+    <a href="tel:5613686767" class="btn btn-accent">Call (561) 368-6767</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Love My Puppy</div>
+      <p class="footer-desc">Family-owned puppy boutique in Boca Raton. Puppies, grooming, accessories, and boarding since 2010.</p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#find">All Puppies</a></li>
+        <li><a href="#find">Hypoallergenic</a></li>
+        <li><a href="#find">Apartment Dogs</a></li>
+        <li><a href="#">Accessories</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#grooming">Grooming</a></li>
+        <li><a href="#grooming">Dematting</a></li>
+        <li><a href="#">Boarding</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="tel:5613686767">(561) 368-6767</a></li>
+        <li><a href="mailto:joann@lovemypuppy.com">joann@lovemypuppy.com</a></li>
+        <li><a href="#visit">Directions</a></li>
+        <li><a href="https://www.yelp.com/biz/love-my-puppy-boca-raton" target="_blank">Yelp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Love My Puppy</span>
+    <span class="footer-credit">Sincerely Ellyette</span>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE -->
+<div class="sticky-mobile">
+  <a href="tel:5613686767">Call (561) 368-6767</a>
+</div>
+
+<script>
+// Nav
+const n=document.getElementById('nav');
+window.addEventListener('scroll',()=>n.classList.toggle('scrolled',window.scrollY>20));
+
+// Reveal
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const i=b.parentElement,o=i.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(x=>x.classList.remove('open'));
+    if(!o)i.classList.add('open');
+  });
+});
+
+// Finder tabs (visual only for preview)
+document.querySelectorAll('.finder-tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.finder-tab').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
